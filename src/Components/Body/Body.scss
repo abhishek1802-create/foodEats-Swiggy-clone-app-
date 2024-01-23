@@ -1,9 +1,23 @@
 .Body{
+    width: 98.5vw;
     display: flex;
     flex-direction: column;
     margin-top: 20px;
     gap: 20px;
     padding-bottom: 10px;
+}
+.Body .dishCards{
+    width: 80vw;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    gap: 10px;
+}
+.Body .dishCards .cards{
+    display: flex;
+    margin: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 .Body h3{
    margin: auto;

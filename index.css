@@ -4,6 +4,12 @@
 
 /* HTML: <div class="loader"></div> */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .loading{
     width: 100vw;
     height: 100vh;

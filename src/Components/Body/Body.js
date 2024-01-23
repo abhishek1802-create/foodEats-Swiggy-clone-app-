@@ -2,10 +2,11 @@ import ResCard, { withPromotedLabel } from "./ResCard";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { API_DATA } from "../../utils/constants";
+import { foodImg } from "../../utils/constants";
 import './Body.scss'
 
 const Body = () => {
-  //const [newListOfRes,setNewListOfRes] = useState([]);
+  const [DishCard,setDishCards] = useState([]);
   const [listOfRes, setListOfRes] = useState([]);
   const [filterListOfRes, setFilterListOfRes] = useState([]);
   const [searchRes, setSearchRes] = useState("");
@@ -19,21 +20,40 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(API_DATA);
     const json = await data.json();
-    console.log(json);
+    //console.log(json);
     setListOfRes(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilterListOfRes(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    ); };
+    ); 
+    setDishCards(
+      json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
+    );
+  };
 
-  console.log(listOfRes);
+  //console.log(listOfRes);
+  console.log(DishCard);
 
 
   if(listOfRes.length == 0 || filterListOfRes.length == 0) return <div className="loading"><div className="loader"></div></div>;
 
   return (
     <div className="Body">
+      <div className="dishCards">
+        <h3>What's in your Mind</h3>
+        <div className="cards">
+          {
+            DishCard.map((dish)=>{
+              return(
+                <div className="foodCard">
+                          <img src={foodImg + dish?.imageId} alt="dishImage" />
+                </div>
+              )
+            })
+          }
+        </div>
+      </div>
       <div className="searchBar">
         <div className="searchRestaurant">
           <input
