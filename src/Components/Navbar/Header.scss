@@ -1,0 +1,39 @@
+.header{
+    width: 98.7vw;
+    height: 60px;
+    padding: 2px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    #logo{
+        width: 50px;
+        height: 50px;
+        margin-left: 50px;
+        opacity: 0.8;
+        cursor: pointer;
+    }
+
+    .header .navItems{
+        margin-right: 80px;
+    }
+    .navItems ul{
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        list-style-type: none;
+    }
+    .navListStyle{
+        text-decoration: none;
+        color: black;
+    }
+    #loginBtn{
+        padding: 5px 20px;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: rgb(121, 239, 121) ;
+        border: 1px solid  rgb(121, 239, 121);
+    }
+}
+
