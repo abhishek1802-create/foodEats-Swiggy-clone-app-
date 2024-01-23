@@ -1,11 +1,12 @@
 .header{
-    width: 98.7vw;
+    width: 100vw;
     height: 60px;
     padding: 2px 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    border: 3px solid #ebebeb;
 
     #logo{
         width: 50px;
@@ -16,7 +17,7 @@
     }
 
     .header .navItems{
-        margin-right: 80px;
+        padding-right: 80px;
     }
     .navItems ul{
         display: flex;
@@ -27,6 +28,9 @@
     .navListStyle{
         text-decoration: none;
         color: black;
+    }
+    .navListStyle:hover{
+        color: orange;
     }
     #loginBtn{
         padding: 5px 20px;

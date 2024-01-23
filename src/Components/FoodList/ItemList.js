@@ -7,6 +7,8 @@ import './ItemList.scss';
 const ItemList = ({ items }) => {
   const dispatch = useDispatch();
 
+  console.log(items);
+
   const handleAddItem = (item) => {
     dispatch(addItem(item));
   };

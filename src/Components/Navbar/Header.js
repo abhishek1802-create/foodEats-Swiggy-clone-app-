@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
 import UserContext from "../../utils/UserContext";
 import { useSelector } from "react-redux";
+import { FaShoppingCart } from "react-icons/fa";
 import './Header.scss'
 
 const Header = () => {
@@ -29,18 +30,18 @@ const Header = () => {
         <ul>
           <li>Online Status : {onlineStatus ? "🟢" : "🔴"}</li>
           <li>
-            <Link className="navListStyle" to="/">
-              Foods
-            </Link>
-          </li>
-          <li>
             <Link className="navListStyle" to="/about">
               About Us
             </Link>
           </li>
           <li>
+            <Link className="navListStyle" to="/">
+              Foods
+            </Link>
+          </li>
+          <li>
             <Link className="navListStyle" to="/cart">
-              Cart ({cartItem.length}-items)
+            <span><FaShoppingCart style={{marginTop:'2px'}} /><sup> ({cartItem.length})</sup></span>
             </Link>
           </li>
           <li>
@@ -55,7 +56,6 @@ const Header = () => {
               {btnName}
             </button>
           </li>
-          {/* <li>{isLoggedIn}</li> */}
         </ul>
       </div>
     </div>

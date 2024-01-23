@@ -32,6 +32,10 @@
     color: black;
     font-weight: bolder;
 }
+.filters{
+    display: flex;
+    gap: 10px;
+}
 #topRes{
     width: 160px;
     padding: 4px 5px;
@@ -42,8 +46,17 @@
     color: black;
     font-weight: bolder;
 }
+#vegRes{
+    padding: 4px 20px;
+    background-color: rgb(121, 239, 121) ;
+    border: 1px solid  rgb(121, 239, 121);
+    border-radius: 3px;
+    cursor: pointer;
+    color: black;
+    font-weight: bolder;
+}
 .Body .resContainer{
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: center;

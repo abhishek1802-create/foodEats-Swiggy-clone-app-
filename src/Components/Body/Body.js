@@ -25,13 +25,12 @@ const Body = () => {
     );
     setFilterListOfRes(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    
-  };
+    ); };
+
+  console.log(listOfRes);
 
 
-  // if(listOfRes.length == 0 || filterListOfRes.length == 0) return <div style
-  //={{display:'flex',justifyContent:'center', alignItems:'center'}}><h1>Loading🚀</h1></div>
+  if(listOfRes.length == 0 || filterListOfRes.length == 0) return <div className="loading"><div className="loader"></div></div>;
 
   return (
     <div className="Body">
@@ -57,6 +56,16 @@ const Body = () => {
             Search
           </button>
         </div>
+        <div className="filters">
+        <button
+          id="vegRes"
+          onClick={() => {
+            //to list out all Restaurant
+            setFilterListOfRes(listOfRes);
+          }}
+        >
+          All
+        </button>
         <button
           id="topRes"
           onClick={() => {
@@ -69,6 +78,19 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        <button
+          id="vegRes"
+          onClick={() => {
+            //to Filter out veg restaurant only
+            const filterRes = listOfRes.filter(
+              (res) => res.info.veg === true
+            );
+            setFilterListOfRes(filterRes);
+          }}
+        >
+          Veg
+        </button>
+        </div>
       </div>
       <h3>Restaurant With Online Food Delivery</h3>
       <div className="resContainer">

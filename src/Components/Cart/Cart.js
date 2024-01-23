@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCartItems } from "../../Slice/cartSlice";
 import CartItemList from "./CartItemList";
+import { VscSmiley } from "react-icons/vsc";
 import './Cart.scss'
 
 const Cart = () => {
@@ -29,13 +30,14 @@ const Cart = () => {
             clear cart
           </button>
           {cartItems.length === 0 && (
-            <h5 style={{ color: "red" }}>
-              Cart is Empty ! Please add Item to cart
+            <h5 className="cartEmptyMessage">
+              Cart is Empty ! Please add Item to cart <VscSmiley />
             </h5>
           )}
         </div>
         <CartItemList items={cartItems} />
-          cartItems && <h4 className="totalPriceOfFood"><i>Total Foods Price:</i> {totalPrice / 100}</h4>
+        <hr />
+        {cartItems && <h4 className="totalPriceOfFood">Total Foods Price: {typeof(totalPrice) === NaN  ? 'Price not Defined' : totalPrice / 100}</h4>}
       </div>
     </div>
   );

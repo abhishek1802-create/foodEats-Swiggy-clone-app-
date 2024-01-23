@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
+import './ResMenu.scss'
 
 const ResMenu = () => {
   const { resId } = useParams();
@@ -10,7 +11,7 @@ const ResMenu = () => {
 
   const resMenu = useRestaurantMenu(resId);
 
-  if (resMenu === null) return <h1>Loading🚀</h1>;
+  if (resMenu === null) return <div className="loading"><div className="loader"></div></div>;
 
   const { itemCards } =
     resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;

@@ -1,21 +1,38 @@
-.resCard{
-    margin-top: 10px;
-    width: 250px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 5px 5px;
-    overflow: hidden;
+.resCard {
+  margin-top: 10px;
+  width: 250px;
+  height: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 5px 5px;
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
 
-    #resImage{
-        width: 100%;
-        height: 180px;
-        border-radius: 8px;
-    }
-    
+  .resName{
+    font-size: 1.2rem;
+    font-weight: bolder;
+  }
+
+  .cuisines {
+    word-break: break-all;
+  }
+
+  #resImage {
+    width: 100%;
+    height: 180px;
+    border-radius: 8px;
+  }
+
+  .rating{
+    display: flex;
+    align-items: center;
+    color: green;
+  }
 }
-.resCard:hover{
-    border: 1px solid black;
-    border-radius: 2px;
+
+.resCard:hover {
+  border: 1px solid black;
+  border-radius: 8px;
 }
