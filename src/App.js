@@ -10,11 +10,17 @@ import Cart from "./Components/Cart/Cart";
 import { Provider } from "react-redux";
 import appStore from "./Store/appStore";
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const AppLayout = () => {
+
+  const appStyle = {
+       width : '100vw',
+  }
+
   return (
-    <Provider store={appStore}>
+    <Provider store={appStore} style={appStyle}>
       <div className="appLayout">
         <Header />
         <Outlet />

@@ -1,14 +1,15 @@
 
-
-.header {
-  width: 98.5vw;
+.header{
+  width: 100vw;
   height: 60px;
-  padding: 2px 0px;
+  padding: 2px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border: 3px solid #ebebeb;
+  top: 0;
+  position:sticky;
 
   #logo {
     width: 50px;

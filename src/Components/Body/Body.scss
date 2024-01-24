@@ -1,9 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+
 .Body{
-    width: 98.5vw;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     margin-top: 20px;
-    gap: 20px;
+    gap: 50px;
     padding-bottom: 10px;
 }
 .Body .dishCards{
@@ -13,13 +19,7 @@
     flex-direction: column;
     gap: 10px;
 }
-.Body .dishCards .cards{
-    display: flex;
-    margin: auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-.Body h3{
+.Body h2{
    margin: auto;
 }
 .Body .searchBar{
@@ -82,4 +82,15 @@
 .cardStyle{
     text-decoration: none;
     color: black;
+}
+.PaginationBox{
+    margin: auto;
+    display: flex;
+    gap: 10px;
+}
+#PageButton{
+    padding: 2px 5px;
+    background-color: blue;
+    color: white;
+    border: 1px #ebebeb;
 }

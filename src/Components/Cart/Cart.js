@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCartItems } from "../../Slice/cartSlice";
 import CartItemList from "./CartItemList";
 import { VscSmiley } from "react-icons/vsc";
-import './Cart.scss'
+import "./Cart.scss";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -37,7 +37,9 @@ const Cart = () => {
         </div>
         <CartItemList items={cartItems} />
         <hr />
-        {cartItems && <h4 className="totalPriceOfFood">Total Foods Price: {typeof(totalPrice) === NaN  ? 'Price not Defined' : totalPrice / 100}</h4>}
+        {cartItems && (
+          <h4 className="totalPriceOfFood"> Total Food price : Rs.{totalPrice / 100}</h4>
+        )}
       </div>
     </div>
   );

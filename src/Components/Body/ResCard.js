@@ -4,7 +4,7 @@ import { IoMdHeart } from "react-icons/io";
 const ResCard = (props) => {
   const { resData } = props;
 
-  return (
+  return (<>
     <div className="resCard">
       <img
         src={
@@ -18,6 +18,7 @@ const ResCard = (props) => {
       <span className="cuisines">{resData?.info?.cuisines.join(" , ")}</span>
       <span className="rating"><IoMdHeart />{resData?.info?.avgRating}</span>
     </div>
+    </>
   );
 };
 

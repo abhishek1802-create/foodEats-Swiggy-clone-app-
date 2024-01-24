@@ -2,14 +2,26 @@ import ResCard, { withPromotedLabel } from "./ResCard";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { API_DATA } from "../../utils/constants";
-import { foodImg } from "../../utils/constants";
 import './Body.scss'
+import DishCards from "./DishCards";
+
 
 const Body = () => {
   const [DishCard,setDishCards] = useState([]);
   const [listOfRes, setListOfRes] = useState([]);
   const [filterListOfRes, setFilterListOfRes] = useState([]);
   const [searchRes, setSearchRes] = useState("");
+
+  // Pagination
+  const itemsPerPage = 8;
+  const [currentPage, setCurrentPage] = useState(1);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentRestaurants = filterListOfRes.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   const PromotedRestaurant = withPromotedLabel(ResCard);
 
@@ -26,7 +38,7 @@ const Body = () => {
     );
     setFilterListOfRes(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    ); 
+    );
     setDishCards(
       json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
     );
@@ -36,22 +48,15 @@ const Body = () => {
   console.log(DishCard);
 
 
-  if(listOfRes.length == 0 || filterListOfRes.length == 0) return <div className="loading"><div className="loader"></div></div>;
+  if(listOfRes.length == 0 || filterListOfRes.length == 0) return <div className="loading">
+  <div className="loader"></div></div>;
 
   return (
     <div className="Body">
       <div className="dishCards">
-        <h3>What's in your Mind</h3>
-        <div className="cards">
-          {
-            DishCard.map((dish)=>{
-              return(
-                <div className="foodCard">
-                          <img src={foodImg + dish?.imageId} alt="dishImage" />
-                </div>
-              )
-            })
-          }
+        <h2>What's in your Mind</h2>
+        <div>
+          <DishCards DishCard={DishCard}/>
         </div>
       </div>
       <div className="searchBar">
@@ -112,11 +117,11 @@ const Body = () => {
         </button>
         </div>
       </div>
-      <h3>Restaurant With Online Food Delivery</h3>
+      <h2>Restaurant With Online Food Delivery</h2>
       <div className="resContainer">
         {
           // to List out all restaurants in the List
-         filterListOfRes.map((restaurant) => (
+         currentRestaurants.map((restaurant) => (
             <Link
               className="cardStyle"
               key={restaurant.info.id}
@@ -130,6 +135,13 @@ const Body = () => {
             </Link>
           ))
         }
+      </div>
+      <div className="PaginationBox">
+        {Array.from({ length: Math.ceil(filterListOfRes.length / itemsPerPage) }, (_, index) => (
+          <button  id="PageButton" key={index + 1} onClick={() => paginate(index + 1)}>
+            {index + 1}
+          </button>
+        ))}
       </div>
     </div>
   );
