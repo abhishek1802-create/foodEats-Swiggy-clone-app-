@@ -52,3 +52,9 @@
     66%  {transform:perspective(150px) rotateX(-180deg) rotateY(-180deg) rotateX(0deg)}
     100% {transform:perspective(150px) rotateX(-180deg) rotateY(-180deg) rotateX(-180deg);filter:grayscale(0.8)}
   }
+
+  .user_card{
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid black;
+  }

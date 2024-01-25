@@ -1,54 +1,52 @@
-import React from "react";
 
-class UserClass extends React.Component{
+import React, { Component } from 'react'
+ class UserClass extends Component {
     constructor(props){
         super(props);
-        this.state={
-            count:1,
+
+        this.state = {
+            userInfo : {
+                name : 'dummy',
+                location : 'dummy location'
+            },
         }
-        console.log(this.props.name+"child Constructor Called")
+        console.log('child constructor')
     }
 
-   async componentDidMount(){
-        console.log(this.props.name+"child Did Mount Called")
-        const response = await fetch('https://api.github.com/users');
-        const data = response.json();
-        console.log(data);
-        
+    async componentDidMount(){
+        console.log('child componentDidMount');
+        const data = await fetch('https://api.github.com/users/akshaymarch7');
+        const json = await data.json();
+        console.log(json);
+        this.setState({
+            userInfo : json,
+        })
+        console.log(this.state.userInfo);
+        this.timer = setInterval(()=>{
+            console.log('Timer Called');
+        },1000);
     }
 
     componentDidUpdate(){
-        console.log("component Did update Called");
-        {
-            data.map((value)=>{
-                return(
-                      <h4>{value.login}</h4>
-                )
-            })
-        }
+        console.log('component did update called');
     }
 
     componentWillUnmount(){
-        console.log("component will unMount Called");
+        console.log('component will unmount called');
+        clearInterval(this.timer);
     }
-    
-    render(){
-        const {name,location} = this.props;
-        console.log(this.props.name+"child Render Called")
-        return(
-            <div className="userCard">
-                <h2>Name : {name} </h2>
-                <h4>Location : {location}</h4>
-                <h4>Count : {this.state.count}</h4>
-                <button onClick={()=>{
-                    this.setState({
-                        count : this.state.count + 1,
-                    })
-                }}>Increment</button>
-                <h4>Component : Function based </h4>
-            </div>
-        );
-    }
+
+  render() {
+    const {name,location,avatar_url} = this.state.userInfo;
+    console.log('child Render');
+    return (
+        <div className='user_card'>
+          <img src={avatar_url} alt='image'/>
+          <h3>Name : {name}</h3>
+          <h3>Location : {location}</h3>
+        </div>
+      )
+  }
 }
 
-export default UserClass;
+export default UserClass
